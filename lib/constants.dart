@@ -7,7 +7,22 @@ const kPrimaryDark = Color(0xFF0A0718);
 const kCardBGDark = Color(0xFF1D1E33);
 const kCardBGDarkActive = Color(0xFF2E304B);
 const kCardBGDarkInactive = Color(0xFF111328);
-const kBottomBtnBG = Color(0xFFEB1555);
+const kColorAccent = Color(0xFFEB1555);
+const kColorInactive = Color(0xFF8D8E98);
+const kColorFab = Color(0xFF4C4F5E);
+
+/// -------------------------------
+/// Calculator config Constants
+/// -------------------------------
+const double kMaxHeight = 220;
+const double kMinHeight = 90;
+const int kDefaultHeight = 180;
+const double kMaxWeight = 350;
+const double kMinWeight = 20;
+const int kDefaultWeight = 74;
+const double kMaxAge = 150;
+const double kMinAge = 12;
+const int kDefaultAge = 26;
 
 /// -------------------------------
 /// Bottom button Constants
@@ -15,13 +30,24 @@ const kBottomBtnBG = Color(0xFFEB1555);
 const kBottomContainerHeight = 70.0;
 
 /// -------------------------------
-/// Constant Widgets
+/// Style Constants
 /// -------------------------------
+const kSimpleCardDefaultMargin =
+    EdgeInsets.symmetric(vertical: 20, horizontal: 15);
+
 const kIconLabelStyle = TextStyle(
   fontSize: 18,
   color: Color(0xFF8D8E98),
 );
 
-const kSeparator = SizedBox(
-  height: 15,
+const kValueLabelStyle = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.w900,
+);
+
+const kLargeButtonTextStyle = TextStyle(
+  fontSize: 25,
+  shadows: [
+    Shadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 30),
+  ],
 );

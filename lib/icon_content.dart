@@ -23,7 +23,9 @@ class IconContent extends StatelessWidget {
           icon,
           size: iconSize,
         ),
-        kSeparator,
+        const SizedBox(
+          height: 15,
+        ),
         Text(
           iconLabel,
           style: kIconLabelStyle,

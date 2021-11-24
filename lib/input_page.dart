@@ -1,3 +1,4 @@
+import 'package:bmi/counter_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,6 +16,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender gender = Gender.notSet;
+  int height = kDefaultHeight;
+  int weight = kDefaultWeight;
+  int age = kDefaultAge;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +27,13 @@ class _InputPageState extends State<InputPage> {
         title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
               children: [
                 Expanded(
                   child: SimpleCard(
-                    mb: 10,
                     color: gender == Gender.male
                         ? kCardBGDarkActive
                         : kCardBGDarkInactive,
@@ -46,7 +50,6 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: SimpleCard(
-                    mb: 10,
                     color: gender == Gender.female
                         ? kCardBGDarkActive
                         : kCardBGDarkInactive,
@@ -64,51 +67,118 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: SimpleCard(
-              mt: 10,
-              mb: 10,
               color: kCardBGDark,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text(
+                    "HEIGHT",
+                    style: kIconLabelStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        height.toString(),
+                        style: kValueLabelStyle,
+                      ),
+                      const SizedBox(width: 10),
+                      const Text(
+                        "cm",
+                        style: kIconLabelStyle,
+                      ),
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      thumbShape:
+                          const RoundSliderThumbShape(enabledThumbRadius: 15),
+                      overlayShape:
+                          const RoundSliderOverlayShape(overlayRadius: 30),
+                      overlayColor: kColorAccent.withAlpha(50),
+                      thumbColor: kColorAccent,
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: kColorInactive,
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      min: kMinHeight,
+                      max: kMaxHeight,
+                      divisions: (kMaxHeight - kMinHeight).toInt(),
+                      onChanged: (newHeight) {
+                        setState(() {
+                          height = newHeight.round();
+                        });
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
             child: Row(
-              children: const [
+              children: [
                 Expanded(
-                  child: SimpleCard(
-                    mt: 10,
-                    mb: 5,
-                    color: kCardBGDark,
+                  child: CounterCard(
+                    name: "WEIGHT",
+                    value: weight,
+                    units: "kg",
+                    onIncrement: () {
+                      if (weight == kMaxWeight) return;
+                      setState(() {
+                        ++weight;
+                      });
+                    },
+                    onDecrement: () {
+                      if (weight == kMinWeight) return;
+                      setState(() {
+                        --weight;
+                      });
+                    },
                   ),
                 ),
                 Expanded(
-                  child: SimpleCard(
-                    mt: 10,
-                    mb: 5,
-                    color: kCardBGDark,
+                  child: CounterCard(
+                    name: "AGE",
+                    value: age,
+                    units: "yr",
+                    onIncrement: () {
+                      if (age == kMaxAge) return;
+                      setState(() {
+                        ++age;
+                      });
+                    },
+                    onDecrement: () {
+                      if (age == kMinAge) return;
+                      setState(() {
+                        --age;
+                      });
+                    },
                   ),
                 ),
               ],
             ),
           ),
-          Container(
-            color: kBottomBtnBG,
-            margin: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-            ),
-            width: double.infinity,
-            height: kBottomContainerHeight,
-            child: MaterialButton(
-              child: const Text(
-                "Click Me",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+          GestureDetector(
+            child: Container(
+              color: kColorAccent,
+              margin: const EdgeInsets.only(
+                top: 10,
+                bottom: 10,
               ),
-              onPressed: () => {},
+              width: double.infinity,
+              height: kBottomContainerHeight,
+              child: const Center(
+                child: Text("CALCULATE", style: kLargeButtonTextStyle),
+              ),
             ),
-          )
+            onTap: () => {Navigator.pushNamed(context, '/results')},
+          ),
         ],
       ),
     );
