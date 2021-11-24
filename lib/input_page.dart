@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'constants.dart';
+import 'enums.dart';
 import 'icon_content.dart';
 import 'simple_card.dart';
-import 'themes.dart';
-
-const bottomContainerHeight = 70.0;
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -15,6 +14,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender gender = Gender.notSet;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,27 +26,39 @@ class _InputPageState extends State<InputPage> {
         children: [
           Expanded(
             child: Row(
-              children: const [
+              children: [
                 Expanded(
                   child: SimpleCard(
                     mb: 10,
-                    mr: 5,
-                    color: cardBGDark,
-                    child: IconContent(
+                    color: gender == Gender.male
+                        ? kCardBGDarkActive
+                        : kCardBGDarkInactive,
+                    child: const IconContent(
                       icon: FontAwesomeIcons.mars,
                       iconLabel: "MALE",
                     ),
+                    onTap: () {
+                      setState(() {
+                        gender = Gender.male;
+                      });
+                    },
                   ),
                 ),
                 Expanded(
                   child: SimpleCard(
                     mb: 10,
-                    ml: 5,
-                    color: cardBGDark,
-                    child: IconContent(
+                    color: gender == Gender.female
+                        ? kCardBGDarkActive
+                        : kCardBGDarkInactive,
+                    child: const IconContent(
                       icon: FontAwesomeIcons.venus,
                       iconLabel: "FEMALE",
                     ),
+                    onTap: () {
+                      setState(() {
+                        gender = Gender.female;
+                      });
+                    },
                   ),
                 ),
               ],
@@ -53,9 +66,9 @@ class _InputPageState extends State<InputPage> {
           ),
           const Expanded(
             child: SimpleCard(
-              mt: 5,
-              mb: 5,
-              color: cardBGDark,
+              mt: 10,
+              mb: 10,
+              color: kCardBGDark,
             ),
           ),
           Expanded(
@@ -64,30 +77,28 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: SimpleCard(
                     mt: 10,
-                    mr: 5,
                     mb: 5,
-                    color: cardBGDark,
+                    color: kCardBGDark,
                   ),
                 ),
                 Expanded(
                   child: SimpleCard(
                     mt: 10,
-                    ml: 5,
                     mb: 5,
-                    color: cardBGDarkActive,
+                    color: kCardBGDark,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomBtnBG,
+            color: kBottomBtnBG,
             margin: const EdgeInsets.only(
               top: 10,
               bottom: 10,
             ),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
             child: MaterialButton(
               child: const Text(
                 "Click Me",
