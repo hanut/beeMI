@@ -1,0 +1,37 @@
+import 'package:flutter/widgets.dart';
+
+class IconContent extends StatelessWidget {
+  final IconData icon;
+  final String iconLabel;
+  final double iconSize;
+
+  const IconContent({
+    Key? key,
+    required this.icon,
+    required this.iconLabel,
+    this.iconSize = 80.0,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          icon,
+          size: iconSize,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          iconLabel,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Color(0xFF8D8E98),
+          ),
+        ),
+      ],
+    );
+  }
+}
