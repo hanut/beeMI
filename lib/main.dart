@@ -26,6 +26,9 @@ class BMICalculator extends StatelessWidget {
       routes: {
         '/': (context) => const InputPage(),
         '/results': (context) => const ResultsPage(),
+        '/account': (context) =>
+            Container(child: const Text("Account & Profile")),
+        '/history': (context) => Container(child: const Text("BMI History")),
       },
     );
   }

@@ -10,6 +10,7 @@ const kCardBGDarkInactive = Color(0xFF111328);
 const kColorAccent = Color(0xFFEB1555);
 const kColorInactive = Color(0xFF8D8E98);
 const kColorFab = Color(0xFF4C4F5E);
+const kColorWhite = Color(0xFFFFFFFF);
 
 /// -------------------------------
 /// Calculator config Constants
@@ -46,8 +47,12 @@ const kValueLabelStyle = TextStyle(
 );
 
 const kLargeButtonTextStyle = TextStyle(
-  fontSize: 25,
-  shadows: [
-    Shadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 30),
-  ],
+  fontSize: 22,
+  letterSpacing: 2.5,
+);
+
+const kNavDrawerListText = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w400,
+  color: Color(0xFFFFFFFF),
 );
