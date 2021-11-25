@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class NavListTile extends StatelessWidget {
   final String label;
@@ -25,8 +25,7 @@ class NavListTile extends StatelessWidget {
         width: double.infinity,
         height: 80,
       ),
-      fillColor:
-          isSelected ? kColorAccent : kCardBGDarkInactive,
+      fillColor: isSelected ? kColorAccent : kCardBGDarkInactive,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

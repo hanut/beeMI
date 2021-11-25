@@ -1,6 +1,5 @@
+import 'package:bmi/constants.dart';
 import 'package:flutter/material.dart';
-
-import 'constants.dart';
 
 class BottomButton extends StatelessWidget {
   final String label;

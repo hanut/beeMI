@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
-import 'input_page.dart';
-import 'results_page.dart';
+import 'pages/account_page.dart';
+import 'pages/history_page.dart';
+import 'pages/input_page.dart';
+import 'pages/results_page.dart';
 
 void main() {
   runApp(const BMICalculator());
@@ -26,9 +28,8 @@ class BMICalculator extends StatelessWidget {
       routes: {
         '/': (context) => const InputPage(),
         '/results': (context) => const ResultsPage(),
-        '/account': (context) =>
-            Container(child: const Text("Account & Profile")),
-        '/history': (context) => Container(child: const Text("BMI History")),
+        '/account': (context) => const HistoryPage(),
+        '/history': (context) => const AccountPage(),
       },
     );
   }

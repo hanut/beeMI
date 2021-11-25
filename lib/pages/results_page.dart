@@ -1,19 +1,17 @@
-import 'package:bmi/bottom_button.dart';
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
-import 'simple_card.dart';
+import '../bmi_report.dart';
+import '../components/bottom_button.dart';
+import '../components/simple_card.dart';
+import '../constants.dart';
 
 class ResultsPage extends StatelessWidget {
-  final double bmi;
-
-  const ResultsPage({
-    Key? key,
-    this.bmi = 22,
-  }) : super(key: key);
+  const ResultsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final report = ModalRoute.of(context)!.settings.arguments as BmiReport;
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -48,16 +46,15 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "NORMAL",
+                      report.message,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
-                        color:
-                            bmi > 25 || bmi < 18.5 ? Colors.red : Colors.green,
+                        color: report.color,
                       ),
                     ),
                     Text(
-                      bmi.toStringAsFixed(1),
+                      report.bmi,
                       style: const TextStyle(
                         fontSize: 100,
                         fontWeight: FontWeight.w900,
@@ -83,12 +80,15 @@ class ResultsPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      width: 250,
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 40,
+                      ),
                       child: Text(
-                        "You have a normal body weight, Good job !",
+                        report.interpretation,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           height: 1.5,
@@ -98,10 +98,12 @@ class ResultsPage extends StatelessWidget {
                     MaterialButton(
                       minWidth: 200,
                       color: kPrimaryDark.withAlpha(50),
-                      child: Text("SAVE"),
-                      onPressed: () => print(
-                        "saveToCloud()",
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                        child: Text("SAVE"),
                       ),
+                      onPressed: () => {},
                     ),
                   ],
                 ),

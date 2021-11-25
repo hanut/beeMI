@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 import 'nav_list_tile.dart';
 
 class NavDrawer extends StatefulWidget {
@@ -14,8 +14,8 @@ class NavDrawer extends StatefulWidget {
 class _NavDrawerState extends State<NavDrawer> {
   String selectedRouted = '/';
 
-  void navigate(String routeName) {
-    print("Navigate to: " + routeName);
+  void navigate(BuildContext ctx, String routeName) {
+    Navigator.pushNamed(ctx, routeName);
   }
 
   @override
@@ -58,18 +58,20 @@ class _NavDrawerState extends State<NavDrawer> {
                   NavListTile(
                     label: "BMI Calculator",
                     iconData: FontAwesomeIcons.calculator,
-                    onTap: () => navigate('/'),
+                    onTap: () => navigate(context, '/'),
                     isSelected: true,
                   ),
                   NavListTile(
                     label: "History",
                     iconData: FontAwesomeIcons.history,
-                    onTap: () => navigate('/history'),
+                    onTap: () => navigate(context, '/history'),
                   ),
                   NavListTile(
                     label: "Account & Profile",
                     iconData: FontAwesomeIcons.userAlt,
-                    onTap: () => navigate('/accounts'),
+                    onTap: () => {
+                      navigate(context, '/accounts'),
+                    },
                   ),
                 ],
               ),
