@@ -1,5 +1,6 @@
-import 'package:bmi/constants.dart';
 import 'package:flutter/widgets.dart';
+
+import '../constants.dart';
 
 class SimpleCard extends StatelessWidget {
   final EdgeInsets margin;

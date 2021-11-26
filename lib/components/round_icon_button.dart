@@ -1,6 +1,7 @@
-import 'package:bmi/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import '../constants.dart';
 
 class RoundIconButton extends StatelessWidget {
   final VoidCallback onTap;

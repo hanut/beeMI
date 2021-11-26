@@ -1,9 +1,9 @@
-import 'package:bmi/bmi_report.dart';
-import 'package:bmi/components/app_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../bmi_report.dart';
 import '../components//bottom_button.dart';
+import '../components/app_page.dart';
 import '../components/counter_card.dart';
 import '../components/icon_content.dart';
 import '../components/simple_card.dart';
